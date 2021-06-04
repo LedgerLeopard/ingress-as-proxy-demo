@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: tls-secret
+  namespace: cert-manager
+spec:
+  secretName: tls-secret
+  dnsNames:
+      - "*.__zone-name__"
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer

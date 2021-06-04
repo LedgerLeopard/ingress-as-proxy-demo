@@ -1,0 +1,22 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: __name__
+  namespace: __namespace__
+spec:
+  ports:
+    - name: __name__
+      port: __port__
+  type: ClusterIP
+---
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: __name__
+  namespace: __namespace__
+subsets:
+  - addresses:
+      - ip: __IP__
+    ports:
+      - name: __name__
+        port: __port__
