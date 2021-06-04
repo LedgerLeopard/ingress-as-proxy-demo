@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-body-size: 32m
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "240"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "240"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "240"
+  name: __name__
+  namespace: __namespace__
+spec:
+  rules:
+  - host: __name__.__zone-name__
+    http:
+      paths:
+      - backend:
+          serviceName: __name__
+          servicePort: __port__
+        path: /
+  tls:
+  - hosts:
+    - __name__.__zone-name__

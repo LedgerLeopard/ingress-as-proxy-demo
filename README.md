@@ -46,9 +46,16 @@
 > **NOTE:** This part better to add to app as part of CI creating process. But at this demo manual variant is produced.
 
 1. Create copy of `Endpoint-template.yaml` as `Endpoint.yaml`: `cp ./Endpoint-template.yaml ./Endpoint.yaml`
-1. Add proper configs to `Endpoint.yaml`
+1. Add proper configs to `Endpoint.yaml`:
     1. `__name__` - name of CI/company/etc
     1. `__port__` - port of app at CI
     1. `__IP__` - IP address of CI
     1. `__namespace__` - namespace for placing endpoint, can be same for every endpoint or separate for each one
 1. Apply configuration: `kubectl apply -f Endpoint.yaml`
+1. Create copy of `Ingress-template.yaml` as `Ingress.yaml`: `cp ./Ingress-template.yaml ./Ingress.yaml`
+1. Add proper configs to `Ingress.yaml`:
+    1. `__name__` - name of CI/company/etc
+    1. `__port__` - port of app at CI
+    1. `__namespace__` - namespace for placing ingress, same as for endpoint
+    1. `__zone-name__` - DNS zone name (same as for ClusterIssuer)
+1. Apply configuration: `kubectl apply -f Ingress.yaml`
